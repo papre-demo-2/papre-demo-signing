@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme - RGB values for Tailwind opacity support */
+    --color-background: 250 250 250;
+    --color-foreground: 10 10 10;
+    --color-card: 255 255 255;
+    --color-card-hover: 245 245 245;
+    --color-border: 229 229 229;
+    --color-primary: 59 130 246;
+    --color-primary-hover: 37 99 235;
+    --color-success: 34 197 94;
+    --color-warning: 245 158 11;
+    --color-error: 239 68 68;
+    --color-info: 59 130 246;
+    --color-muted: 113 113 122;
+    --color-muted-foreground: 82 82 91;
+  }
+
+  .dark {
+    /* Dark theme - RGB values */
+    --color-background: 10 10 10;
+    --color-foreground: 250 250 250;
+    --color-card: 20 20 20;
+    --color-card-hover: 26 26 26;
+    --color-border: 38 38 38;
+    --color-primary: 59 130 246;
+    --color-primary-hover: 37 99 235;
+    --color-success: 34 197 94;
+    --color-warning: 245 158 11;
+    --color-error: 239 68 68;
+    --color-info: 59 130 246;
+    --color-muted: 113 113 122;
+    --color-muted-foreground: 161 161 170;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted;
+  }
+}
+
+@layer components {
+  /* Focus ring utility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Glass effect for cards */
+  .glass {
+    @apply bg-card/80 backdrop-blur-sm;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent;
+  }
+
+  /* Progress dots */
+  .progress-dot {
+    @apply w-2 h-2 rounded-full transition-colors duration-200;
+  }
+
+  .progress-dot-filled {
+    @apply bg-success;
+  }
+
+  .progress-dot-empty {
+    @apply bg-border;
+  }
+
+  .progress-dot-current {
+    @apply bg-primary animate-pulse-subtle;
+  }
+}
+
+@layer utilities {
+  /* Truncate address */
+  .truncate-address {
+    max-width: 120px;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
